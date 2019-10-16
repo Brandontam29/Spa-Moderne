@@ -1,21 +1,62 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
-import { withLocalize } from "react-localize-redux"
+import { withLocalize, Translate } from "react-localize-redux"
+
 import LanguageToggle from "./LanguageToggle"
 import Logo from "./images/home-logo.png"
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      topics: ["home", "promotion", "services", "products", "contact"],
+      mouseOver: {
+        home: false,
+        promotion: false,
+        services: false,
+        products: false,
+        contact: false
+      }
+    }
+  }
+
+  handleOpen = topic => {
+    let mouseOverTopic = { ...this.state.mouseOverTopic }
+    mouseOverTopic.mouseOver.mouseOverTopic.mouseOver[topic] = true
+
+    this.setState({ mouseOverTopic: true, mouseOverMenu: false })
+  }
+
+  handleClose = () => {
+    this.setState({ mouseOver: false, mouseOverMenu: false })
+  }
+
+  renderLinks = topics => {
+    return topics.map(topic => {
+      if (topic !== "home") {
+        return (
+          <Link to={"/" + topic}>
+            <Translate id={"navbar-topics." + topic} />{" "}
+          </Link>
+        )
+      }
+      return (
+        <Link to={"/"}>
+          <Translate id={"navbar-topics." + topic} />{" "}
+        </Link>
+      )
+    })
+  }
+
   render = () => {
-    console.log("NAV BAR HERE")
     return (
       <div>
-        <img className="img" src={Logo} alt="" />
+        <Link to={"/"}>
+          <img className="img" src={Logo} alt="" />
+        </Link>
         <LanguageToggle />
-        <Link to="/">Home</Link>
-        <Link to="/promotion">Promotion</Link>
-        <Link to="/services">Services</Link>
-        <Link to="/products">Produits</Link>
-        <Link to="/contact">Contact</Link>
+
+        {this.renderLinks(this.state.topics)}
       </div>
     )
   }

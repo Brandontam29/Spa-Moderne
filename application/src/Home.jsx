@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { renderToStaticMarkup } from "react-dom/server"
-import { withLocalize } from "react-localize-redux"
+import { withLocalize, Translate } from "react-localize-redux"
 import Translations from "./translations.json"
 
 class Home extends Component {
@@ -16,10 +16,14 @@ class Home extends Component {
       options: { renderToStaticMarkup }
     })
   }
+
   render = () => {
-    return <div>Home</div>
+    return (
+      <div>
+        <Translate id="navbar-topics.home" />
+      </div>
+    )
   }
 }
 
 export default withLocalize(Home)
-// export default Home

@@ -3,5 +3,12 @@
   "farewell": ["Goodbye", "Au revoir"],
   "movie": {
     "title": ["Jurassic Park", "Le Parc jurassique"]
+  },
+  "navbar-topics": {
+    "home": ["Home", "Accueil"],
+    "promotion": ["Promotion", "Promotion"],
+    "services": ["Services", "Services"],
+    "products": ["Poducts", "Produits"],
+    "contact": ["Contact", "Contact"]
   }
 }

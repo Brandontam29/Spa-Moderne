@@ -8,10 +8,11 @@ import Products from "./Products"
 import Services from "./Services"
 import Contact from "./Contact"
 import Promotions from "./Promotions"
-import Notfound from "./Notfound"
+import NotFound from "./NotFound"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
 import Translations from "./translations.json"
+import Popper from "./PopperExample"
 
 import "./App.css"
 import "./index.css"
@@ -21,7 +22,6 @@ const App = () => {
     <LocalizeProvider>
       <Router>
         <Navbar />
-        <Translate id="movie.title" />
         <Route exact={true} path="/" component={Home} />
         <Route exact={true} path={"/contact"} component={Contact} />
         {/* <Route exact={true} path="/signup" render={this.renderSignup} />
@@ -32,7 +32,9 @@ const App = () => {
             path="/otheraccount/:userId"
             component={OtherAccount}
           /> */}
+        <Route path="*" component={NotFound} />
         <Footer />
+        <Popper />
       </Router>
     </LocalizeProvider>
   )
