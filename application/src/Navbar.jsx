@@ -10,7 +10,7 @@ class NavBar extends Component {
     return (
       <div>
         <img className="img" src={Logo} alt="" />
-        {withLocalize(LanguageToggle)}
+        <LanguageToggle />
         <Link to="/">Home</Link>
         <Link to="/promotion">Promotion</Link>
         <Link to="/services">Services</Link>

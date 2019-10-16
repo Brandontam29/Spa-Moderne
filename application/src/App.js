@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import { LocalizeProvider, Translate } from "react-localize-redux"
+import { renderToStaticMarkup } from "react-dom/server"
 
 import Home from "./Home"
 import Products from "./Products"
@@ -10,26 +11,20 @@ import Promotions from "./Promotions"
 import Notfound from "./Notfound"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
+import Translations from "./translations.json"
+
 import "./App.css"
 import "./index.css"
 
-class App extends Component {
-  renderHome = () => <Home />
-  renderPromotions = () => <Promotions />
-  renderProducts = () => <Products />
-  renderServices = () => <Services />
-  renderNotfound = () => <Notfound />
-  renderContact = () => <Contact />
-
-  render = () => {
-    return (
-      <LocalizeProvider>
-        <Router>
-          <Navbar />
-          <Translate id="movie.title" />
-          <Route exact={true} path="/" render={this.renderHome} />
-          {/* <Route exact={true} path={"/" + }  render={this.renderLogin} />
-          <Route exact={true} path="/signup" render={this.renderSignup} />
+const App = () => {
+  return (
+    <LocalizeProvider>
+      <Router>
+        <Navbar />
+        <Translate id="movie.title" />
+        <Route exact={true} path="/" component={Home} />
+        <Route exact={true} path={"/contact"} component={Contact} />
+        {/* <Route exact={true} path="/signup" render={this.renderSignup} />
           <Route exact={true} path="//:threadId" component={Thread} />
           <Route exact={true} path="/myaccount" render={this.renderMyAccount} />
           <Route
@@ -37,11 +32,10 @@ class App extends Component {
             path="/otheraccount/:userId"
             component={OtherAccount}
           /> */}
-          <Footer />
-        </Router>
-      </LocalizeProvider>
-    )
-  }
+        <Footer />
+      </Router>
+    </LocalizeProvider>
+  )
 }
 
 export default App
