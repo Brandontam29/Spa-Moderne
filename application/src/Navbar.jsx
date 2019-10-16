@@ -1,23 +1,24 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { withLocalize } from "react-localize-redux"
-
-import LanguageToggle from "./LanguageToggle.js"
+import LanguageToggle from "./LanguageToggle"
+import Logo from "./images/home-logo.png"
 
 class NavBar extends Component {
   render = () => {
+    console.log("NAV BAR HERE")
     return (
       <div>
-        <img src="localhost:3000/images/home-logo.png" alt="" />
+        <img className="img" src={Logo} alt="" />
         {withLocalize(LanguageToggle)}
         <Link to="/">Home</Link>
-        <Link to="/login">Promotion</Link>
-        <Link to="/signup">Services</Link>
+        <Link to="/promotion">Promotion</Link>
+        <Link to="/services">Services</Link>
         <Link to="/products">Produits</Link>
-        <Link to="/myaccount">Contact</Link>
+        <Link to="/contact">Contact</Link>
       </div>
     )
   }
 }
 
-export default NavBar
+export default withLocalize(NavBar)

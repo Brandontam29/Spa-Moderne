@@ -1,15 +1,15 @@
 import React, { Component } from "react"
 import { BrowserRouter as Router, Route } from "react-router-dom"
-import { LocalizeProvider } from "react-localize-redux"
+import { LocalizeProvider, Translate } from "react-localize-redux"
 
-import Home from "./Home.js"
-import Products from "./Products.js"
-import Services from "./Services.js"
-import Contact from "./Contact.js"
-import Promotions from "./Promotions.js"
-import Notfound from "./Notfound.js"
-import Navbar from "./Navbar.js"
-import Footer from "./Footer.js"
+import Home from "./Home"
+import Products from "./Products"
+import Services from "./Services"
+import Contact from "./Contact"
+import Promotions from "./Promotions"
+import Notfound from "./Notfound"
+import Navbar from "./Navbar"
+import Footer from "./Footer"
 import "./App.css"
 import "./index.css"
 
@@ -26,6 +26,7 @@ class App extends Component {
       <LocalizeProvider>
         <Router>
           <Navbar />
+          <Translate id="movie.title" />
           <Route exact={true} path="/" render={this.renderHome} />
           {/* <Route exact={true} path={"/" + }  render={this.renderLogin} />
           <Route exact={true} path="/signup" render={this.renderSignup} />
