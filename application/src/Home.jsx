@@ -1,6 +1,7 @@
 import React, { Component } from "react"
-import { renderToStaticMarkup } from "react-dom/server"
 import { withLocalize, Translate } from "react-localize-redux"
+import { renderToStaticMarkup } from "react-dom/server"
+
 import Translations from "./translations.json"
 
 class Home extends Component {

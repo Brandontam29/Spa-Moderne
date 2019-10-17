@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { withLocalize, Translate } from "react-localize-redux"
 
 class NotFound extends Component {
   render = () => {
@@ -10,4 +11,4 @@ class NotFound extends Component {
   }
 }
 
-export default NotFound
+export default withLocalize(NotFound)
