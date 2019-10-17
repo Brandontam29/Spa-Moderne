@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { LocalizeProvider, Translate } from "react-localize-redux"
 import { renderToStaticMarkup } from "react-dom/server"
 
@@ -22,9 +22,10 @@ const App = () => {
     <LocalizeProvider>
       <Router>
         <Navbar />
-        <Route exact={true} path="/" component={Home} />
-        <Route exact={true} path={"/contact"} component={Contact} />
-        {/* <Route exact={true} path="/signup" render={this.renderSignup} />
+        <Switch>
+          <Route exact={true} path="/" component={Home} />
+          <Route exact={true} path={"/contact"} component={Contact} />
+          {/* <Route exact={true} path="/signup" render={this.renderSignup} />
           <Route exact={true} path="//:threadId" component={Thread} />
           <Route exact={true} path="/myaccount" render={this.renderMyAccount} />
           <Route
@@ -32,7 +33,8 @@ const App = () => {
             path="/otheraccount/:userId"
             component={OtherAccount}
           /> */}
-        <Route path="*" component={NotFound} />
+          <Route path="*" component={NotFound} />
+        </Switch>
         <Footer />
         <Popper />
       </Router>

@@ -21,10 +21,9 @@ class NavBar extends Component {
   }
 
   handleOpen = topic => {
-    let mouseOverTopic = { ...this.state.mouseOverTopic }
-    mouseOverTopic.mouseOver.mouseOverTopic.mouseOver[topic] = true
-
-    this.setState({ mouseOverTopic: true, mouseOverMenu: false })
+    let mouseOverTopic = { ...this.state.mouseOver }
+    mouseOverTopic[topic] = true
+    this.setState({ mouseOver: mouseOverTopic })
   }
 
   handleClose = () => {

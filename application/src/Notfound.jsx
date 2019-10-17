@@ -2,7 +2,11 @@ import React, { Component } from "react"
 
 class NotFound extends Component {
   render = () => {
-    return <div>404 PAGE NOT FOUND</div>
+    return (
+      <div>
+        <h3>404 PAGE NOT FOUND</h3>
+      </div>
+    )
   }
 }
 
