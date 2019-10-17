@@ -21,19 +21,23 @@ class NavBar extends Component {
   }
 
   handleOpen = topic => {
+    console.log("you entered", topic)
     let mouseOverTopic = { ...this.state.mouseOver }
     mouseOverTopic[topic] = true
     this.setState({ mouseOver: mouseOverTopic })
   }
 
   handleClose = topic => {
+    console.log("you left ", topic)
     let mouseOverTopic = { ...this.state.mouseOver }
     mouseOverTopic[topic] = false
     this.setState({ mouseOver: mouseOverTopic })
   }
 
   renderMenu = topic => {
-    if (this.state.mouseOver.topic === true) {
+    console.log("rendering menu")
+    if (this.state.mouseOver[topic] === true) {
+      console.log("you openned the menu for", topic)
       return (
         <div>
           this is the menu <Translate id={"navbar-topics." + topic} />
@@ -43,18 +47,21 @@ class NavBar extends Component {
     return <div></div>
   }
 
-  renderLinks = topics => {
+  renderLinks = (topics, i) => {
     return topics.map(topic => {
       if (topic !== "home") {
         return (
-          <Link
-            to={"/" + topic}
-            onMouseEnter={() => this.handleOpen(topic)}
-            onMouseLeave={() => this.handleClose(topic)}
-          >
+          <div>
+            <Link
+              key={i}
+              to={"/" + topic}
+              onMouseEnter={() => this.handleOpen(topic)}
+              onMouseLeave={() => this.handleClose(topic)}
+            >
+              <Translate id={"navbar-topics." + topic} />{" "}
+            </Link>{" "}
             {this.renderMenu(topic)}
-            <Translate id={"navbar-topics." + topic} />{" "}
-          </Link>
+          </div>
         )
       }
       return (

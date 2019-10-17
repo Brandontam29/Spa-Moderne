@@ -1,12 +1,10 @@
 import React, { Component } from "react"
-import { renderToStaticMarkup } from "react-dom/server"
+import { withLocalize, Translate } from "react-localize-redux"
 
-import Translations from "./translations.json"
-
-class Footer extends Component {
+class Contact extends Component {
   render = () => {
     return <div>contact</div>
   }
 }
 
-export default Footer
+export default withLocalize(Contact)
