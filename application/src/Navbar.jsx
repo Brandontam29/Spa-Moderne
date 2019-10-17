@@ -19,28 +19,21 @@ class NavBar extends Component {
       }
     }
   }
-  //mouse enter and leave events
-
-  //this works but its unreliable
 
   handleOpen = topic => {
-    console.log("you entered", topic)
     let mouseOverTopic = { ...this.state.mouseOver }
     mouseOverTopic[topic] = true
     this.setState({ mouseOver: mouseOverTopic })
   }
 
   handleClose = topic => {
-    console.log("you left ", topic)
     let mouseOverTopic = { ...this.state.mouseOver }
     mouseOverTopic[topic] = false
     this.setState({ mouseOver: mouseOverTopic })
   }
 
   renderMenu = topic => {
-    console.log("rendering menu")
     if (this.state.mouseOver[topic] === true) {
-      console.log("you openned the menu for", topic)
       return (
         <div>
           this is the menu <Translate id={"navbar-topics." + topic} />
