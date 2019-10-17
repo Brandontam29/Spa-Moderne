@@ -19,6 +19,9 @@ class NavBar extends Component {
       }
     }
   }
+  //mouse enter and leave events
+
+  //this works but its unreliable
 
   handleOpen = topic => {
     console.log("you entered", topic)
@@ -51,13 +54,11 @@ class NavBar extends Component {
     return topics.map(topic => {
       if (topic !== "home") {
         return (
-          <div>
-            <Link
-              key={i}
-              to={"/" + topic}
-              onMouseEnter={() => this.handleOpen(topic)}
-              onMouseLeave={() => this.handleClose(topic)}
-            >
+          <div
+            onMouseOver={() => this.handleOpen(topic)}
+            onMouseLeave={() => this.handleClose(topic)}
+          >
+            <Link key={i} to={"/" + topic}>
               <Translate id={"navbar-topics." + topic} />{" "}
             </Link>{" "}
             {this.renderMenu(topic)}
